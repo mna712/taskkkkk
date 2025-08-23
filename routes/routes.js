@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { getQuestions, postQuestion, getQuestionById, postAnswer} = require('../controllers/questionAndA_C');
+const { getQuestions, postQuestion, getQuestionById, addAnswer} = require('../controllers/questionAndA_C');
 
 router.get("/quest",getQuestions);
 router.post("/quest",postQuestion);
