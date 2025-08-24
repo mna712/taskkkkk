@@ -12,7 +12,10 @@ const answerSchema = new Schema({
   questionId: { type: String, required: true },
 });
 
+const Question = mongoose.model("Question", questionSchema);
+const Answer = mongoose.model("Answer", answerSchema);
+
 module.exports = {
-  questionSchema,
-  answerSchema,
+  Question,
+  Answer,
 };
