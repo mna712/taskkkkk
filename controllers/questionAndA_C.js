@@ -1,10 +1,10 @@
 
 // controllers/qaController.js
-import Question from "../models/Question.js";
+const {questionSchema,answerSchema} = require("../models/schema_model.js");
 
  async function askQuestion(req, res) {
   try {
-    const q = await Question.create(req.body);
+    const q = await questionSchema.create(req.body);
     res.json(q);
   } catch (e) {
     res.status(500).json({ error: " error" });
@@ -12,7 +12,7 @@ import Question from "../models/Question.js";
 }
  async function detailsQuestion(req,res){
     try {
-        const q = await Question.findById(req.params.id);
+        const q = await questionSchema.findById(req.params.id);
         if (!q) {
         return res.status(404).json({ error: "Question not found" });
         }
@@ -23,7 +23,7 @@ import Question from "../models/Question.js";
 }
  async function getQuestions(req, res) {
   try {
-    const qs = await Question.find();
+    const qs = await questionSchema.find();
     res.json(qs);
   } catch (e) {
     res.status(500).json({ error: " error" });
@@ -32,7 +32,7 @@ import Question from "../models/Question.js";
  async function addAnswer(req,res){
     try {
         const { question } = req.body;
-        const q = await Question.findById({_id:question});
+        const q = await answerSchema.findById({_id:question});
         if (!q) {
             return res.status(404).json({ error: "Question not found" });
         }
